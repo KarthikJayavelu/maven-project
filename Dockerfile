@@ -1,4 +1,7 @@
-FROM jdk:11
+FROM tomcat:8.0
+
+ADD ./webapp/target/*.war /usr/local/tomcat/webapps
+
 EXPOSE 8080
-ADD target/webapp.war webapp.war
-ENTRYPOINT ["java","-war","/webapp.war"]
+
+CMD ["catalina.sh" , "run"]
